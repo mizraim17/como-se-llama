@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
- import { Col, Card, CardTitle, Row, Icon } from 'react-materialize'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Card, Button, Row, Col, Container } from "react-bootstrap";
 
 function App() {
 	const [films, setFilms] = useState("");
@@ -23,44 +24,49 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Como se llama la peli?</h1>
-			<button
-				className="btn waves-effect waves-light"
-				type="submit"
-				name="action"
-			>
-				Submit
-				<i className="material-icons right">send</i>
-			</button>
-			<button onClick={findFilm}> obten peli</button>
- 
-			<div className="fletz red">
-				{films
-					? films.map((el, index) => {
-            return (
-                <Row>
-                  <Col
-                    m={6}
-                    s={12}
-                  >
-                    <Card
-                      actions={[
-                        <a key="1" href="#">This is a Link</a>
-                      ]}
-                      closeIcon={<Icon>close</Icon>}
-                      header={<CardTitle image={`http://image.tmdb.org/t/p/w185${el.poster_path}`}><h1>{el.title}</h1></CardTitle>}
-                      revealIcon={<Icon>more_vert</Icon>}
-                    >
-                      Here is the standard card with an image thumbnail.
-                    </Card>
-                  </Col>
-                </Row>						 
-							);
-					  })
-					: ""}
-			</div>
 
-			<div className="card-panel teal lighten-2">
-				This is a card panel with a teal lighten-2 class
+			<Button onClick={findFilm}> get film</Button>
+
+			<div>
+				<Container>
+					<Row>
+						{films
+							? films.map((el, index) => {
+									return (
+										<Col md={6} lg={4} sm={12}>
+											<Card style={{ width: "18rem" }}>
+												<Card.Img
+													variant="top"
+													src={`http://image.tmdb.org/t/p/w185${el.poster_path}`}
+												/>
+												<Card.Body>
+													<Card.Title>{el.title}</Card.Title>
+													<Card.Text>{el.overview}</Card.Text>
+													<Button variant="primary">Go somewhere</Button>
+												</Card.Body>
+											</Card>
+										</Col>
+									);
+							  })
+							: ""}
+					</Row>
+				</Container>
+				<Container>
+					<Row>
+						<Col lg={4} md={6} sm={12} className="red">
+							<p>sajksakj</p>
+						</Col>
+						<Col lg={4} md={6} sm={12} className="green">
+							<p>sajksakj</p>
+						</Col>
+						<Col lg={4} md={6} sm={12} className="yellow">
+							<p>sajksakj</p>
+						</Col>
+						<Col lg={4} md={6} sm={12} className="blue">
+							<p>sajksakj</p>
+						</Col>
+					</Row>
+				</Container>
 			</div>
 		</div>
 	);
