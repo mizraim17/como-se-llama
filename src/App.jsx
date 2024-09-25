@@ -1,19 +1,22 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./App.css";
+import { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-	Card,
-	Button,
-	Row,
-	Col,
-	Container,
-	InputGroup,
-	FormControl,
-} from "react-bootstrap";
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+ 
+import axios from "axios";
+
+
+import './App.css'
 
 function App() {
-	const [films, setFilms] = useState("");
+ 
+  	const [films, setFilms] = useState("");
 	const [nameFilm, setnameFilm] = useState("");
 
 	const onChange = (e) => {
@@ -21,7 +24,8 @@ function App() {
 		console.log("name", nameFilm);
 	};
 
-	const findFilm = () => {
+
+  	const findFilm = () => {
 		// axios.get(
 		// 	` https://api.themoviedb.org/3/discover/movie?api_key=3c5bc5cac4d9c2e29d68ab73c21b1cfb&language=es-MX&?with_people=108916,7467&sort_by=popularity.desc`
 		// );
@@ -40,19 +44,20 @@ function App() {
 			});
 	};
 
-	return (
-		<div className="App">
-			<h1>Como se llama la peli?</h1>
-			<Button onClick={findFilm}> get film</Button>
-
-			<div>
-				<Container>
-					<Row>
+  return (
+    <>
+    
+    
+      <Container>
+        <h1>Como se llama la peli?</h1>
+			  {/* <Button onClick={findFilm}> get film</Button> */}
+ 
+					<Row  fluid="lg" >
 						{films
 							? films.map((el, index) => {
 									return (
 										<Col md={6} lg={4} sm={12} key={index}>
-											<Card style={{ width: "18rem" }}>
+											<Card style={{ width: "18rem" }} className="mt-4">
 												{el.poster_path == null ? (
 													<Card.Img
 														variant="top"
@@ -75,22 +80,26 @@ function App() {
 									);
 							  })
 							: ""}
-					</Row>
-				</Container>
-				<Container>
-					<InputGroup className="mb-3">
+          </Row>
+          
+          
+			</Container>
+			
+      <Container>
+					<InputGroup className="mb-3 mt-5">
 						<FormControl
-							placeholder="Recipient's username"
+							placeholder="Nombre de la pelicula  "
 							aria-label="Recipient's username"
 							aria-describedby="basic-addon2"
 							onChange={onChange}
 						/>
-						<InputGroup.Append>
+						 
 							<Button onClick={findFilm}> get film</Button>
-						</InputGroup.Append>
+				 
 					</InputGroup>
-				</Container>
-				<Container>
+			</Container>
+				
+      <Container>
 					<Row>
 						<Col lg={4} md={6} sm={12} className="red">
 							<p>sajksakj</p>
@@ -105,10 +114,10 @@ function App() {
 							<p>sajksakj</p>
 						</Col>
 					</Row>
-				</Container>
-			</div>
-		</div>
-	);
+			</Container>
+		 
+    </>
+  )
 }
 
-export default App;
+export default App
