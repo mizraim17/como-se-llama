@@ -15,6 +15,8 @@ import axios from "axios";
 import './App.css'
 
 function App() {
+
+	const apiKey = import.meta.env.VITE_API_KEY;
  
   	const [films, setFilms] = useState("");
 	const [nameFilm, setnameFilm] = useState("");
@@ -27,15 +29,15 @@ function App() {
 
   	const findFilm = () => {
 		// axios.get(
-		// 	` https://api.themoviedb.org/3/discover/movie?api_key=3c5bc5cac4d9c2e29d68ab73c21b1cfb&language=es-MX&?with_people=108916,7467&sort_by=popularity.desc`
+		// 	` https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=es-MX&?with_people=108916,7467&sort_by=popularity.desc`
 		// );
 
 		axios
 			.get(
-				// ` https://api.themoviedb.org/3/person/5?api_key=3c5bc5cac4d9c2e29d68ab73c21b1cfb&language=en-US`
-				// ` https://api.themoviedb.org/3/discover/movie?api_key=3c5bc5cac4d9c2e29d68ab73c21b1cfb&language=es-MX&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=12`
-				// ` https://api.themoviedb.org/3/discover/movie?api_key=3c5bc5cac4d9c2e29d68ab73c21b1cfb&language=es-MX&?with_people=108916,7467&sort_by=popularity.desc``
-				`https://api.themoviedb.org/3/search/movie?api_key=3c5bc5cac4d9c2e29d68ab73c21b1cfb&language=es-MX&query=${nameFilm}`
+				// ` https://api.themoviedb.org/3/person/5?api_key=${apiKey}&language=en-US`
+				// ` https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=es-MX&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=12`
+				// ` https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=es-MX&?with_people=108916,7467&sort_by=popularity.desc``
+				`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=es-MX&query=${nameFilm}`
 				//https://api.themoviedb.org/3/person/{person_id}?api_key=<<api_key>>&language=en-US
 			)
 			.then((res) => {
