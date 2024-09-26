@@ -27,6 +27,10 @@ function App() {
 	};
 
 
+	const findByName  ="	https://api.themoviedb.org/3/search/movie?api_key="
+	
+ 
+
   	const findFilm = () => {
 		// axios.get(
 		// 	` https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=es-MX&?with_people=108916,7467&sort_by=popularity.desc`
@@ -37,7 +41,7 @@ function App() {
 				// ` https://api.themoviedb.org/3/person/5?api_key=${apiKey}&language=en-US`
 				// ` https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=es-MX&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=12`
 				// ` https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=es-MX&?with_people=108916,7467&sort_by=popularity.desc``
-				`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=es-MX&query=${nameFilm}`
+				`${findByName}${apiKey}&language=es-MX&query=${nameFilm}`
 				//https://api.themoviedb.org/3/person/{person_id}?api_key=<<api_key>>&language=en-US
 			)
 			.then((res) => {
